@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflection - Learn to Love Yourself</title>
+    
+    <!-- Google Fonts Integration -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&family=Playfair+Display:ital,wght@1,400;1,600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ==========================================
+       1. OPENING STAGE CONTAINER
+    ========================================== -->
+    <div id="opening-screen">
+        <div class="narrative-container">
+            <div class="narrative-text" id="n1"><span id="logo-opening">🌸<br>Reflection</span></div>
+            <div class="narrative-text" id="n2">"Hi."</div>
+            <div class="narrative-text" id="n3">"How are you today?"</div>
+            <div class="narrative-text" id="n4">"Let's spend a little time with yourself."</div>
+            <div class="narrative-text" id="n5">
+                <button class="btn-prime" onclick="exitOpeningScreen()">Begin Your Journey</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN ACCESS CONTROLS -->
+    <header>
+        <button class="theme-toggle" onclick="toggleThemeSystem()" title="Ubah Tema">
+            <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+    </header>
+
+    <!-- FLOATING GLASS MENU NAVIGATION -->
+    <nav class="floating-nav">
+        <a href="#welcome" title="Home"><i class="fas fa-home"></i></a>
+        <a href="#mirror" title="Mirror Camera"><i class="fas fa-camera"></i></a>
+        <a href="#affirmation" title="Affirmations"><i class="fas fa-heart"></i></a>
+        <a href="#mood" title="Mood Tracker"><i class="fas fa-smile"></i></a>
+        <a href="#journal" title="Journal"><i class="fas fa-book"></i></a>
+        <a href="#challenge" title="Challenge"><i class="fas fa-tasks"></i></a>
+        <a href="#music" title="Music"><i class="fas fa-music"></i></a>
+        <a href="#contact-section" title="Contact"><i class="fas fa-user"></i></a>
+    </nav>
+
+    <!-- ==========================================
+       MAIN EXPERIENCE BLOCKS
+    ========================================== */ -->
+    
+    <!-- WELCOME / HERO BLOCK -->
+    <section id="welcome">
+        <div class="glass-card">
+            <h1 style="color: var(--primary);">Reflection</h1>
+            <p style="font-weight: 500; font-size: 1.2rem; color: var(--text);">✨ Learn To Love Yourself ✨</p>
+            <p class="quote-text" style="margin: 2rem 0;">"You deserve the same kindness you give to everyone else."</p>
+            <p>Ada hal-hal yang hanya bisa kita dengar ketika dunia mulai tenang. Bukan karena suaranya baru muncul, melainkan karena akhirnya kita memberi ruang untuk mendengarkannya.</p>
+            <p>Barangkali, selama ini yang paling lama menunggu untuk didengar bukanlah dunia di sekelilingmu... melainkan dirimu sendiri.</p>
+        </div>
+    </section>
+
+    <!-- SMART MIRROR CAMERA ACCESS -->
+    <section id="mirror">
+        <div class="glass-card">
+            <h2>Meet Yourself</h2>
+            <p>Lihatlah ke depan layar. Orang di depanmu telah bertahan melewati banyak badai hingga hari ini. Berikan dia senyuman terbaik.</p>
+            
+            <div class="mirror-box">
+                <video id="webcam" autoplay playsinline></video>
+                <div class="mirror-overlay">
+                    <span class="mirror-overlay-text" id="overlay-quote">Take a look.</span>
+                </div>
+            </div>
+
+            <div class="camera-actions">
+                <button class="btn-prime" id="capture-trigger" onclick="initializeCamera()"><i class="fas fa-video"></i> Aktifkan Kamera</button>
+                <button class="btn-sec" onclick="toggleMirrorDirection()"><i class="fas fa-camera-rotate"></i> Switch Camera</button>
+                <button class="btn-sec" onclick="triggerFullscreenMode()"><i class="fas fa-expand"></i> Fullscreen</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- RANDOM DAILY AFFIRMATIONS -->
+    <section id="affirmation">
+        <div class="glass-card">
+            <h2>Daily Affirmation</h2>
+            <p>Jika harimu terasa begitu panjang,</p>
+            <p>Semoga ada satu kalimat yang membuat hatimu merasa sedikit lebih tenang.</p>
+            <div style="min-height: 120px; display: flex; align-items: center; justify-content: center;">
+                <p class="quote-text" id="quote-board">"I am growing every day."</p>
+            </div>
+            <button class="btn-prime" onclick="fetchRandomAffirmation()">Random Affirmation</button>
+        </div>
+    </section>
+
+    <!-- MOOD MONITORING HUB -->
+    <section id="mood">
+        <div class="glass-card">
+            <h2>Mood Tracker</h2>
+            <p>How do you feel today?</p>
+            <div class="mood-grid">
+                <button class="mood-btn" onclick="processMoodSelection('😄', 'Happy')">😄</button>
+                <button class="mood-btn" onclick="processMoodSelection('😊', 'Content')">😊</button>
+                <button class="mood-btn" onclick="processMoodSelection('😌', 'Calm')">😌</button>
+                <button class="mood-btn" onclick="processMoodSelection('😐', 'Neutral')">😐</button>
+                <button class="mood-btn" onclick="processMoodSelection('😢', 'Sad')">😢</button>
+                <button class="mood-btn" onclick="processMoodSelection('😭', 'Overwhelmed')">😭</button>
+            </div>
+            <p id="mood-response"></p>
+        </div>
+    </section>
+
+    <!-- GRATITUDE DIARY JOURNAL -->
+    <section id="journal">
+        <div class="glass-card">
+            <h2>Gratitude Journal</h2>
+            <p>Tuliskan satu atau beberapa hal kecil yang paling kamu syukuri hari ini.</p>
+            <div class="diary-container">
+                <div class="diary-date" id="live-date">Today</div>
+                <textarea class="diary-paper" id="journal-editor" placeholder="Hari ini aku bersyukur karena..."></textarea>
+                <button class="btn-prime" style="margin-top: 15px;" onclick="commitJournalEntry()">Save Entry</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SELF LOVE ROUTINE CHECKLIST -->
+    <section id="challenge">
+        <div class="glass-card">
+            <h2>Kebiasaan Baik Hari Ini</h2>
+            <p>(Jangan Curang Yaww ^^)</p>
+            
+            <div class="progress-track">
+                <div class="progress-bar" id="challenge-progress"></div>
+            </div>
+            <p id="progress-status">Progress: 0%</p>
+
+            <div style="margin-top: 1.5rem;">
+                <label class="challenge-item">
+                    <input type="checkbox" class="task-check" onclick="evaluateChallengeProgress()">
+                    <span>Minum air putih cukup</span>
+                </label>
+                <label class="challenge-item">
+                    <input type="checkbox" class="task-check" onclick="evaluateChallengeProgress()">
+                    <span>Jalan kaki santai selama 15 menit</span>
+                </label>
+                <label class="challenge-item">
+                    <input type="checkbox" class="task-check" onclick="evaluateChallengeProgress()">
+                    <span>Tersenyum dengan tulus di depan cermin</span>
+                </label>
+                <label class="challenge-item">
+                    <input type="checkbox" class="task-check" onclick="evaluateChallengeProgress()">
+                    <span>Mengistirahatkan pikiran dari media sosial sejenak</span>
+                </label>
+                <label class="challenge-item">
+                    <input type="checkbox" class="task-check" onclick="evaluateChallengeProgress()">
+                    <span>Mengucapkan terima kasih pada diri sendiri hari ini?</span>
+                </label>
+            </div>
+        </div>
+    </section>
+
+    <!-- RELAXATION SOUNDSCAPE PLAYER -->
+    <section id="music">
+        <div class="glass-card">
+            <h2>Relaxing Music</h2>
+            <p>Nyalakan pelengkap suasana ambient untuk menenangkan gelombang pikiranmu.</p>
+            <div class="music-grid">
+                <div class="track-card" onclick="controlAudioTracks(this, 'Rain')">
+                    <i class="fas fa-cloud-showers-heavy"></i>
+                    <span>Rain</span>
+                </div>
+                <div class="track-card" onclick="controlAudioTracks(this, 'Ocean')">
+                    <i class="fas fa-water"></i>
+                    <span>Ocean</span>
+                </div>
+                <div class="track-card" onclick="controlAudioTracks(this, 'Forest')">
+                    <i class="fas fa-tree"></i>
+                    <span>Forest</span>
+                </div>
+                <div class="track-card" onclick="controlAudioTracks(this, 'Piano')">
+                    <i class="fas fa-music"></i>
+                    <span>Piano</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SELF LOVE FACTS STATISTICS -->
+    <section id="stats">
+        <div class="glass-card">
+            <h2>Self Love Facts</h2>
+            <div class="stat-circle" id="counter-fact">0%</div>
+            <p style="font-weight: 500;">Kebahagiaan sejati dimulai dari kerelaan menerima diri sendiri seutuhnya.</p>
+        </div>
+    </section>
+
+    <!-- PROFESSIONAL CLOSING & IDENTITY HUB -->
+    <footer id="contact-section" class="glass-card">
+        <h2>Thank You</h2>
+        <p class="quote-text" style="font-size: 1.2rem; margin-bottom: 2rem;">
+            ~Thank you for spending a little time with yourself today.
+        </p>
+        
+        <div class="profile-img">
+    <img src="foto-nabiel.jpeg" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+        </div>
+        
+        <div class="dev-name">NABIEL PRATAMA PUTRA</div>
+        <div class="dev-major">Land Resource Management</div>
+        <div class="dev-univ">IPB University</div>
+        
+        <p style="font-size: 0.95rem; margin-top: 10px;">Let's connect!</p>
+        
+<div class="social-row">
+    <a href="https://www.instagram.com/nabiel.pp" target="_blank" title="Instagram">
+        <i class="fab fa-instagram"></i>
+    </a>
+
+    <a href="https://linkedin.com/in/nabiel-pratama-putra" target="_blank" title="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+
+    <a href="https://github.com/N4b13L" target="_blank" title="GitHub">
+        <i class="fab fa-github"></i>
+    </a>
+
+    <a href="https://wa.me/6281312405397" target="_blank" title="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <a href="mailto:namaputra@apps.ipb.ac.id" title="Email">
+        <i class="fas fa-envelope"></i>
+    </a>
+</div>
+        
+        <div class="final-greeting">
+            <p>See you tomorrow.</p>
+            <p style="color: var(--primary); margin-top: 5px;">Take care of yourself.</p>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+       ENGINE LOGIC CORE (VANILLA JAVASCRIPT ES6)
+    ========================================== -->
+    <script src="js/script.js"></script>
+</body>
+</html>
