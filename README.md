@@ -126,7 +126,6 @@ GitHub
 https://github.com/N4b13L
 
 Email
-
 namaputra@apps.ipb.ac.id
 
 ---
@@ -134,3 +133,13 @@ namaputra@apps.ipb.ac.id
 ## 📄 License
 
 This project is created for educational purposes.
+
+## Deskripsi Program
+
+Reflection – Learn to Love Yourself merupakan sebuah website interaktif yang dikembangkan menggunakan HTML, CSS, dan JavaScript dengan tujuan membantu pengguna meningkatkan kesadaran diri (self-awareness), serta membangun kebiasaan positif dalam kehidupan sehari-hari.
+
+Website ini menghadirkan berbagai fitur seperti Smart Mirror yang memanfaatkan kamera perangkat sebagai media refleksi diri, Daily Affirmation yang menampilkan kalimat-kalimat motivasi secara acak, Mood Tracker untuk mengenali kondisi emosional pengguna, Gratitude Journal sebagai tempat mencatat rasa syukur harian, Daily Challenge yang mendorong terbentuknya kebiasaan baik, serta Relaxing Music yang menyediakan musik ambient seperti suara hujan, hutan, laut, dan piano untuk menciptakan suasana yang lebih tenang.
+
+Selain itu, aplikasi juga mendukung Light Mode dan Dark Mode, menyimpan data pengguna menggunakan Local Storage, serta memiliki antarmuka modern dengan konsep Glassmorphism yang responsif pada berbagai ukuran layar.
+
+Website ini dikembangkan sebagai media sederhana yang mengajak pengguna meluangkan waktu beberapa menit setiap hari untuk lebih mengenal, menerima, dan menghargai dirinya sendiri.
